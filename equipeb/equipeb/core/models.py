@@ -19,6 +19,9 @@ class Palestra(models.Model):
     def __unicode__(self):
         return self.titulo
 
-# class Pessoa(models.Model):
-#     nome = models.CharField(max_length=64)
-#     tipo = models.CharField(max_length=30)
+class Pessoa(models.Model):
+     nome = models.CharField(max_length=64)
+     tipo = models.CharField(max_length=30)
+
+     def __unicode__(self):
+        return self.nome
