@@ -6,6 +6,7 @@ class Evento(models.Model):
     # palestrante = 
     descricao = models.TextField()
     data = models.DateField()
+    image = models.ImageField(upload_to='media')
 
     def __unicode__(self):
         return self.nome
