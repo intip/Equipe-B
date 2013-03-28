@@ -1,0 +1,14 @@
+<dl class="dl-horizontal">
+    <dt>Ínicio horário <i class="icon-arrow-right"></i> </dt>
+    <dd>{{ palestra.hora_inicio|time:"H:i" }}</dd>
+    <dt>Fim horário <i class="icon-arrow-left"></i></dt>
+    <dd>{{ palestra.hora_fim|time:"H:i" }}</dd>
+</dl>
+
+<p>Visitantes Inscritos:</p>
+
+<ul>
+{% for visitante in visitantes %}
+    <li>{{ visitante.nome }}</li>
+{% endfor %}
+</ul>
