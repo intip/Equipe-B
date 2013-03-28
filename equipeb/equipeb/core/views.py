@@ -16,9 +16,19 @@ def home(request):
 
 def ver_evento(request, pk):
     evento = Evento.objects.get(id=pk)
-    palestras = Palestra.objects.get(evento_id=pk)
+    palestras = Palestra.objects.filter(evento_id=pk)
     context = RequestContext(request, {'evento':evento, 'palestras':palestras})
     template = loader.get_template('evento.html')
+    content = template.render(context)
+
+    return HttpResponse(content)
+
+def ver_palestra(request, pk):
+    # evento = Evento.objects.get(id=pk)
+    palestras = Palestra.objects.get(id=pk)
+    evento = Evento.objects.get()
+    context = RequestContext(request, {'evento':evento, 'palestras':palestras})
+    template = loader.get_template('palestra.html')
     content = template.render(context)
 
     return HttpResponse(content)

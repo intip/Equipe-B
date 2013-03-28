@@ -6,8 +6,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-     url(r'^$', 'equipeb.core.views.home', name='home'),
-      url(r'^evento/(?P<pk>\d+)/$', 'equipeb.core.views.ver_evento', name='ver_evento'),
+    url(r'^$', 'equipeb.core.views.home', name='home'),
+    url(r'^evento/(?P<pk>\d+)/$', 'equipeb.core.views.ver_evento', name='ver_evento'),
+    url(r'^palestra/(?P<pk>\d+)/$', 'equipeb.core.views.ver_palestra', name='ver_palestra'),
      # url(r'^equipeb/', include('equipeb.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
