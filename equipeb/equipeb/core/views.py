@@ -1,11 +1,13 @@
 # Create your views here.
 from django.http import HttpResponse
 import datetime
-from django.template import Context, Template
+from django.template import Context, Template, RequestContext
 from django.template import loader
 
+# from core.models import Evento
+
 def home(request):
-    context = Context()
+    context = RequestContext(request)
     template = loader.get_template('index.html')
 
     content = template.render(context)
