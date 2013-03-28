@@ -14,6 +14,7 @@ class Palestra(models.Model):
     titulo = models.CharField(max_length=256)
     hora_inicio = models.TimeField()
     hora_fim = models.TimeField()
+    evento = models.ForeignKey(Evento)
 
     def __unicode__(self):
         return self.titulo
