@@ -6,8 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'equipeb.views.home', name='home'),
-    # url(r'^equipeb/', include('equipeb.foo.urls')),
+     url(r'^$', 'equipeb.core.views.home', name='home'),
+     # url(r'^equipeb/', include('equipeb.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
