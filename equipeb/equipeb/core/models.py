@@ -10,13 +10,9 @@ class Evento(models.Model):
     def __unicode__(self):
         return self.nome
 
-class Pessoa(models.Model):
-    __TIPO = (
-        ('P', 'Palestrante'),
-        ('V', 'Visitante')
-    )
+class Palestrante(models.Model):
     nome = models.CharField(max_length=64)
-    tipo = models.CharField(max_length=1, choices=__TIPO, default="P")
+    email = models.EmailField()
 
     def __unicode__(self):
         return self.nome
@@ -26,7 +22,16 @@ class Palestra(models.Model):
     hora_inicio = models.TimeField()
     hora_fim = models.TimeField()
     evento = models.ForeignKey(Evento)
-    palestrante = models.OneToOneField(Pessoa)
+    palestrante = models.OneToOneField(Palestrante)
 
     def __unicode__(self):
         return self.titulo
+
+class Visitante(models.Model):
+    nome = models.CharField(max_length=64)
+    palestra = models.ForeignKey(Palestra)
+    def __unicode__(self):
+        return self.nome
+
+
+

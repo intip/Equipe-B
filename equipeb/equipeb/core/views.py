@@ -24,10 +24,9 @@ def ver_evento(request, pk):
     return HttpResponse(content)
 
 def ver_palestra(request, pk):
-    # evento = Evento.objects.get(id=pk)
-    palestras = Palestra.objects.get(id=pk)
-    evento = Evento.objects.get()
-    context = RequestContext(request, {'evento':evento, 'palestras':palestras})
+    palestra = Palestra.objects.get(id=pk)
+    evento = Evento.objects.get(id=palestra.evento_id)
+    context = RequestContext(request, {'evento':evento, 'palestra':palestra})
     template = loader.get_template('palestra.html')
     content = template.render(context)
 
