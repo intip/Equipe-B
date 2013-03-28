@@ -4,12 +4,12 @@ import datetime
 from django.template import Context, Template, RequestContext
 from django.template import loader
 
-# from core.models import Evento
+from models import Evento
 
 def home(request):
+    eventos = Evento.objects.all()
     context = RequestContext(request)
     template = loader.get_template('index.html')
-
     content = template.render(context)
 
     return HttpResponse(content)
