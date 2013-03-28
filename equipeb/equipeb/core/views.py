@@ -4,7 +4,7 @@ import datetime
 from django.template import Context, Template, RequestContext
 from django.template import loader
 
-from models import Evento
+from models import Evento, Palestra
 
 def home(request):
     eventos = Evento.objects.all()
@@ -16,7 +16,8 @@ def home(request):
 
 def ver_evento(request, pk):
     evento = Evento.objects.get(id=pk)
-    context = RequestContext(request, {'evento':evento})
+    palestras = Palestra.objects.get(evento_id=pk)
+    context = RequestContext(request, {'evento':evento, 'palestras':palestras})
     template = loader.get_template('evento.html')
     content = template.render(context)
 
