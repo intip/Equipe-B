@@ -114,6 +114,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'south',
     'equipeb.core',
     'django.contrib.auth',
     'django.contrib.contenttypes',
