@@ -13,3 +13,11 @@ def home(request):
     content = template.render(context)
 
     return HttpResponse(content)
+
+def ver_evento(request, pk):
+    evento = Evento.objects.get(id=pk)
+    context = RequestContext(request, {'evento':evento})
+    template = loader.get_template('evento.html')
+    content = template.render(context)
+
+    return HttpResponse(content)
