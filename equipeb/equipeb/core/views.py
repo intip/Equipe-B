@@ -8,7 +8,7 @@ from models import Evento
 
 def home(request):
     eventos = Evento.objects.all()
-    context = RequestContext(request)
+    context = RequestContext(request, {'eventos':eventos})
     template = loader.get_template('index.html')
     content = template.render(context)
 
