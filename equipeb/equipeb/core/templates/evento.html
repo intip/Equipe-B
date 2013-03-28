@@ -9,16 +9,14 @@
     
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/estilos.css" />
-    
-    <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
 
 </head>
 <body>
     
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div id="navbar-example" class="navbar navbar-static navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="./index.html">Equipe B</a>
+          <span class="brand">INTIP - Equipe B</span>
         </div>
       </div>
     </div>
@@ -27,19 +25,66 @@
         <div class="row">
             <div class="span12">
                 <section>
+                    
                     <div class="page-header">
-                        <h1>Nome do evento</h1>
+                        <h1>{{ evento.nome }}</h1>
                     </div>
+                    
                     <dl class="dl-horizontal">
                         <dt><i class="icon-calendar"></i> Data: </dt>
-                        <dd>10/10/10</dd>
-                        <dt><i class="icon-map-marker"></i> Local: </dt>
-                        <dd>Belo Horizonte</dd>
+                        <dd>{{ evento.data|date:"d/m/y"}}</dd>
+                        <!-- <dt><i class="icon-map-marker"></i> Local: </dt>
+                        <dd>Belo Horizonte</dd> -->
+                        <dt>Descrição <i class="icon-info-sign"></i></dt>
+                        <dd>{{ evento.descricao }}</dd>
                     </dl>
+                    
+                    <hr>
+                    
+                    <h2>Lista de Palestrante</h2>
+                    
+                    <div class="row-fluid">
+                        
+                        {% for palestra in palestrante %}
+                        <article class="span4">
+                            <a href="">
+                                
+                                <header>
+                                    <h3>Nome do palestrante</h3>
+                                </header>
+                                
+                                <span href="palestra1" class="btn">Participantes</span>
+                                
+                                <div id="palestra1" class="modal hide fade">
+                                  <div class="modal-header">
+                                    <gbutton type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4>Lista de Participantes</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    <p>
+                                        <ul>
+                                        {% for participante in participantes %}
+                                            <li>{{ participante.nome }}</li>
+                                        {% endfor %}
+                                        </ul>
+                                    </p>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <a href="#" class="btn btn-primary">Fechar</a>
+                                  </div>
+                                </div>
+                            </a>
+                        </article>
+                        {% endfor %}
+                        
+                    </div>
+                    
                 </section>
             </div>
         </div>
     </div>
+    
+    <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
     
 </body>
 </html>

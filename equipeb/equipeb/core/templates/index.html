@@ -9,16 +9,14 @@
     
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/estilos.css" />
-    
-    <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
 
 </head>
 <body>
     
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div id="navbar-example" class="navbar navbar-static navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="./index.html">Equipe B</a>
+          <span class="brand">INTIP - Equipe B</span>
         </div>
       </div>
     </div>
@@ -27,40 +25,38 @@
         <div class="row">
             <div class="span12">
                 <section>
+                    
                     <div class="page-header">
                         <h1>Lista de Eventos</h1>
                     </div>
-                    <article>
-                        <a href="#">
-                            <header>
-                                <h2>Título do evento</h2>
-                            </header>
-                            <dl class="dl-horizontal">
-                                <dt><i class="icon-calendar"></i> Data: </dt>
-                                <dd>10/10/10</dd>
-                                <dt><i class="icon-map-marker"></i> Local: </dt>
-                                <dd>Belo Horizonte</dd>
-                            </dl>
-                        </a>
-                    </article>
-                    <hr>
-                    <article>
-                        <a href="#">
-                            <header>
-                                <h2>Título do evento</h2>
-                            </header>
-                            <dl class="dl-horizontal">
-                                <dt><i class="icon-calendar"></i> Data: </dt>
-                                <dd>10/10/10</dd>
-                                <dt><i class="icon-map-marker"></i> Local: </dt>
-                                <dd>Belo Horizonte</dd>
-                            </dl>
-                        </a>
-                    </article>
+                    
+                    <div class="row-fluid">
+                        {% for evento in eventos %}
+                        <article class="span4">
+                            <a href="#">
+                                <header>
+                                    <h2>{{ evento.nome }}</h2>
+                                </header>
+                                <dl class="dl-horizontal">
+                                    <dt>Data <i class="icon-calendar"></i></dt>
+                                    <dd>{{ evento.data|date:"d/m/y"}}</dd>
+                                    <!-- <dt>Local <i class="icon-map-marker"></i></dt>
+                                    <dd>Belo Horizonte</dd> -->
+                                    <dt>Descrição <i class="icon-info-sign"></i></dt>
+                                    <dd>{{ evento.descricao }}</dd>
+                                </dl>
+                                <span class="btn pull-right"><i class="icon-plus"></i> Veja mais detalhe</span>
+                            </a>
+                        </article>
+                        {% endfor %}
+                    </div>
+                    
                 </section>
             </div>
         </div>
     </div>
+    
+    <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
     
 </body>
 </html>
