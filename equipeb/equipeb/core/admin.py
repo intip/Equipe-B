@@ -9,6 +9,7 @@ class Palestra(admin.TabularInline):
 	extra = 1
 
 class EventoAdmin(admin.ModelAdmin):
+	list_filter = ['data']
 	inlines = [Palestra]
 
 
