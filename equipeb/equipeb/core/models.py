@@ -1,15 +1,12 @@
-from django.db import models
-
-# Create your models here.
 class Evento(models.Model):
     nome = models.CharField(max_length=64)
-    # palestrante = 
     descricao = models.TextField()
     data = models.DateField()
-    image = models.ImageField(upload_to='media')
+    imagem = models.ImageField(upload_to='media')
 
     def __unicode__(self):
         return self.nome
+
 
 class Palestrante(models.Model):
     nome = models.CharField(max_length=64)
@@ -18,7 +15,8 @@ class Palestrante(models.Model):
     def __unicode__(self):
         return self.nome
 
-class Palestra(models.Model):
+
+class Palestra(models.Moddel):
     titulo = models.CharField(max_length=256)
     hora_inicio = models.TimeField()
     hora_fim = models.TimeField()
@@ -28,11 +26,12 @@ class Palestra(models.Model):
     def __unicode__(self):
         return self.titulo
 
+
 class Visitante(models.Model):
     nome = models.CharField(max_length=64)
     palestra = models.ForeignKey(Palestra)
+    avatar = models.ImageField(
+        upload_to='media', default="", null=True, blank=True)
+
     def __unicode__(self):
         return self.nome
-
-
-
