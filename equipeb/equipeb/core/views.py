@@ -43,7 +43,7 @@ def list_by_field(request):
     return the events listed by date
     """
     evento = Evento.objects.order_by(request.GET.get('type', 'data'))
-    context = RequestContext(request, {'evento':evento})
+    context = RequestContext(request, {'eventos':evento})
     template = loader.get_template('index.html')
     content = template.render(context)
     return HttpResponse(content)
