@@ -39,3 +39,9 @@ class Visitante(models.Model):
 
     def __unicode__(self):
         return self.nome
+
+class Formulario(models.Model):
+      nome = models.CharField(max_length=64)
+      telefone = models.CharField(max_length=50, null=True, blank=True)
+      email = models.EmailField(null=True, blank=True)
+      descricao = models.TextField()
