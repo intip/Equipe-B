@@ -37,6 +37,8 @@
                                 <header>
                                     <h2>{{ evento.nome }}</h2>
                                 </header>
+                                <a href="/?type=nome">Ordenar por nome</a>
+                                <a href="/?type=data">Ordenar por data</a>
                                 <dl class="dl-horizontal">
                                     <dt>Data <i class="icon-calendar"></i></dt>
                                     <dd>{{ evento.data|date:"d/m/y"}}</dd>
