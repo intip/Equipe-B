@@ -9,6 +9,7 @@ from django.template import loader
 from models import Evento, Palestra, Palestrante, Visitante
 
 
+
 def home(request):
     eventos = Evento.objects.all()
     context = RequestContext(request, {'eventos':eventos})
@@ -40,4 +41,14 @@ def ver_palestra(request, pk):
 
     return HttpResponse(content)
 
+def list_by_date(request):
+    """
+    return the events listed by date
+    """
+    return Evento.objects.order_by('data')
 
+def list_by_name(request):
+    """
+    return the objects listed b
+    """
+    return Evento.objects.order_by('nome')
