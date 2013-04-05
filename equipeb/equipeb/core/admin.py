@@ -1,3 +1,5 @@
+#coding:utf8
+
 from django.contrib import admin
 from equipeb.core.models import Evento, Palestra, Visitante, Palestrante
 

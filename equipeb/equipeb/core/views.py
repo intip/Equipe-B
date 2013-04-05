@@ -1,3 +1,6 @@
+#coding:utf8
+
+
 from django.http import HttpResponse
 import datetime
 from django.template import Context, Template, RequestContext
