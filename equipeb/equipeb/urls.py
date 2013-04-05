@@ -10,6 +10,8 @@ urlpatterns = patterns('',
     url(r'^$', 'equipeb.core.views.home', name='home'),
     url(r'^evento/(?P<pk>\d+)/$', 'equipeb.core.views.ver_evento', name='ver_evento'),
     url(r'^palestra/(?P<pk>\d+)/$', 'equipeb.core.views.ver_palestra', name='ver_palestra'),
+    url(r'^evento/date_order/', 'equipeb.core.views.list_by_date', name='list_by_date'),
+    url(r'^evento/name_order/', 'equipeb.core.views.list_by_name', name='list_by_name')
      # url(r'^equipeb/', include('equipeb.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
