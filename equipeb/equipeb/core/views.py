@@ -1,6 +1,3 @@
-#coding:utf8
-
-
 from django.http import HttpResponse
 import datetime
 from django.template import Context, Template, RequestContext
@@ -41,14 +38,13 @@ def ver_palestra(request, pk):
 
     return HttpResponse(content)
 
-def list_by_date(request):
+def list_by_field(request):
     """
     return the events listed by date
     """
-    return Evento.objects.order_by('data')
+    evento = Evento.objects.order_by(request['GET'].get('type'))
+    context = RequestContext(request, {'evento':evento})$              
+    template = loader.get_template('index.html')$                           
+    content = template.render(context)
+    return HttpResponse(content)
 
-def list_by_name(request):
-    """
-    return the objects listed b
-    """
-    return Evento.objects.order_by('nome')
