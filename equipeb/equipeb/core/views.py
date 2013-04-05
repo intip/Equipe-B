@@ -48,3 +48,10 @@ def list_by_field(request):
     content = template.render(context)
     return HttpResponse(content)
 
+def subscribe(request):
+    if request.method=="POST":
+        pass
+    else:
+        return direct_to_template(request, 'subscriptions/subscription_form.html',
+                                  {'form':SubscriptionForm()})
+
