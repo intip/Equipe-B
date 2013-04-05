@@ -1,3 +1,5 @@
+from django.db import models
+
 class Evento(models.Model):
     nome = models.CharField(max_length=64)
     descricao = models.TextField()
@@ -16,7 +18,7 @@ class Palestrante(models.Model):
         return self.nome
 
 
-class Palestra(models.Moddel):
+class Palestra(models.Model):
     titulo = models.CharField(max_length=256)
     hora_inicio = models.TimeField()
     hora_fim = models.TimeField()
