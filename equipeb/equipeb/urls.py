@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'equipeb.core.views.list_by_field', name='list_by_field'),
     url(r'^evento/(?P<pk>\d+)/$', 'equipeb.core.views.ver_evento', name='ver_evento'),
+    url(r'^evento/(?P<pk>\d+)/subscription$', 'equipeb.core.views.subscription', name='subscription'),
     url(r'^palestra/(?P<pk>\d+)/$', 'equipeb.core.views.ver_palestra', name='ver_palestra'),
      # url(r'^equipeb/', include('equipeb.foo.urls')),
 

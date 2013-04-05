@@ -1,9 +1,11 @@
-from django.http import HttpResponse
+#coding:utf8
+
+from django.http import HttpResponse, HttpResponseRedirect
 import datetime
 from django.template import Context, Template, RequestContext
 from django.template import loader
-
 from models import Evento, Palestra, Palestrante, Visitante
+from forms import SubscriptionForm
 
 
 
@@ -48,10 +50,21 @@ def list_by_field(request):
     content = template.render(context)
     return HttpResponse(content)
 
-def subscribe(request):
-    if request.method=="POST":
-        pass
-    else:
-        return direct_to_template(request, 'subscriptions/subscription_form.html',
-                                  {'form':SubscriptionForm()})
+def subscription(request,pk):
+    if request.POST:
+        form = SubscriptionForm(request.POST)
+        if  form.is_valid():
+            obj = form.save()
+            return HttpResponseRedirect('/')
+        else:
+            template = loader.get_template("subscription_form.html")
+            context = RequestContext(request, {'form':form})
+            content = template.render(context)
+            return HttpResponse(content)
+
+
+    template = loader.get_template("subscription_form.html")
+    context = RequestContext(request, {'form':SubscriptionForm})
+    content = template.render(context)
+    return HttpResponse(content)
 
