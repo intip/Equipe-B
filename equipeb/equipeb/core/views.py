@@ -32,7 +32,7 @@ def ver_palestra(request, pk):
     palestra = Palestra.objects.get(id=pk)
     evento = Evento.objects.get(id=palestra.evento_id)
     palestrante = Palestrante.objects.get(id=palestra.palestrante_id)
-    visitantes = Visitante.objects.get(palestra_id=pk)
+    visitantes = Visitante.objects.filter(palestra_id=pk)
     context = RequestContext(request, {'evento':evento, 'palestra':palestra,'palestrante':palestrante,
                                        'visitantes':visitantes})
     template = loader.get_template('palestra.html')
