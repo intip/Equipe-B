@@ -1,0 +1,49 @@
+<!doctype html>    
+<html>
+    <head>
+        
+        <meta charset="utf-8">
+        <title>Projeto - Equipe B</title>
+        
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/estilos.css" />
+
+        {% block css %}
+        {% endblock %}
+
+    </head>
+<body>
+    
+    <div id="navbar-example" class="navbar navbar-static navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+            <ul class="nav">
+                <li>
+                    <a class="brand" href="#">INTIP - Equipe B</a>
+                </li>
+                <li class="divider-vertical"></li>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li class="divider-vertical"></li>
+                <li>
+                    <a href="/">Contato</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
+
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>
