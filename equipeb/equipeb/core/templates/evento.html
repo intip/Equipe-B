@@ -1,76 +1,54 @@
-<!doctype html>
-    
-<html>
-    
-<head>
-    
-    <meta charset="utf-8">
-    <title>Projeto - Equipe B</title>
-    
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}/css/estilos.css" />
+{% extends "base.html" %}
 
-</head>
-<body>
-    
-    <div id="navbar-example" class="navbar navbar-static navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <span class="brand">INTIP - Equipe B</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <section>
-                    
-                    <div class="page-header">
-                        <h1>{{ evento.nome }}</h1>
-                    </div>
-                    <img src={{MEDIA_URL}}{{ evento.imagem }}/>
-                    <dl class="dl-horizontal">
-                        <dt><i class="icon-calendar"></i> Data: </dt>
-                        <dd>{{ evento.data|date:"d/m/y"}}</dd>
-                        <!-- <dt><i class="icon-map-marker"></i> Local: </dt>
-                        <dd>Belo Horizonte</dd> -->
-                        <dt>Descrição <i class="icon-info-sign"></i></dt>
-                        <dd>{{ evento.descricao }}</dd>
-                    </dl>
-                    <div clas="row-fluid">
-                        <a href="subscription">Inscreva-se</a> 
-                    </div>
-                    <hr>
-                    
-                    <h2>Lista de Palestras</h2>
-                    
-                    <div class="row-fluid">
+{% block content %}
+<div class="row">
+    <div class="span12">
+        <section>
+            
+            <div class="page-header">
+                <h1>{{ evento.nome }}</h1>
+            </div>
+            
+            <img src={{MEDIA_URL}}{{ evento.imagem }}/>
+
+            <dl class="dl-horizontal">
+                <dt><i class="icon-calendar"></i> Data: </dt>
+                <dd>{{ evento.data|date:"d/m/y"}}</dd>
+                <!-- <dt><i class="icon-map-marker"></i> Local: </dt>
+                <dd>Belo Horizonte</dd> -->
+                <dt>Descrição <i class="icon-info-sign"></i></dt>
+                <dd>{{ evento.descricao }}</dd>
+            </dl>
+            <div clas="row-fluid">
+                <a class="btn btn-primary" href="subscription">Inscreva-se</a> 
+            </div>
+            <hr>
+            
+            <h2>Lista de Palestras</h2>
+            
+            <div class="row-fluid">
+                
+                {% for palestra in palestras %}
+                <article class="span6">
                         
-                        {% for palestra in palestras %}
-                        <article class="span6">
-                                
-                                <header>
-                                    <h3>{{ palestra.titulo }}</h3>
-                                </header>
-                                
-                                Nome palestrante:
-                                <p class="lead">{{ palestra.palestrante }}</p>
-                                
-                                <dl class="dl-horizontal">
-                                    <dt>Ínicio horário <i class="icon-arrow-right"></i> </dt>
-                                    <dd>{{ palestra.hora_inicio|time:"H:i" }}</dd>
-                                    <dt>Fim horário <i class="icon-arrow-left"></i></dt>
-                                    <dd>{{ palestra.hora_fim|time:"H:i" }}</dd>
-                                </dl>
-                                
-                                <a href="#participantes" data-palestra="{{palestra.id}}" data-toggle="modal" data-target="#participantes" class="btn palestra">Detalhes da palestra</a>
-                        </article>
-                        {% endfor %}
+                        <header>
+                            <h3>{{ palestra.titulo }}</h3>
+                        </header>
                         
-                    </div>
-                    
-                </section>
+                        Nome palestrante:
+                        <p class="lead">{{ palestra.palestrante }}</p>
+                        
+                        <dl class="dl-horizontal">
+                            <dt>Ínicio horário <i class="icon-arrow-right"></i> </dt>
+                            <dd>{{ palestra.hora_inicio|time:"H:i" }}</dd>
+                            <dt>Fim horário <i class="icon-arrow-left"></i></dt>
+                            <dd>{{ palestra.hora_fim|time:"H:i" }}</dd>
+                        </dl>
+                        
+                        <a href="#participantes" data-palestra="{{palestra.id}}" data-toggle="modal" data-target="#participantes" class="btn palestra">Detalhes da palestra</a>
+                </article>
+                {% endfor %}
+                
             </div>
         </div>
     </div>
@@ -86,18 +64,14 @@
       <div class="modal-footer">
         <a href="#" data-dismiss="modal" class="btn btn-primary">Fechar</a>
       </div>
-    </div>
+{% endblock %}
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-    <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
-    <script>
-    $(".palestra").click(function(){
-        $.get("/palestra/" + $(this).data("palestra"), function(data){
-            $(".modal-body").html(data);
-        });
-    })
-    </script>
-    
-</body>
-</html>
+{% block scripts %}
+<script>
+$(".palestra").click(function(){
+    $.get("/palestra/" + $(this).data("palestra"), function(data){
+        $(".modal-body").html(data);
+    });
+})
+</script>
+{% endblock %}
