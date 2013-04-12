@@ -41,7 +41,10 @@ class Visitante(models.Model):
         return self.nome
 
 class Subscription(models.Model):
-      nome = models.CharField(max_length=64)
-      telefone = models.CharField(max_length=50, null=True, blank=True)
-      email = models.EmailField(null=True, blank=True)
-      descricao = models.TextField()
+    nome = models.CharField(max_length=64)
+    telefone = models.CharField(max_length=50, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    descricao = models.TextField()
+
+    def __unicode__(self):
+        return self.nome
