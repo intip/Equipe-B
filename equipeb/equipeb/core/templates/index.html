@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row">
     <div class="span12">
-        <section>
+        <section class="">
                 
             <h1>Lista de Eventos</h1>
 
@@ -17,36 +17,46 @@
 
             <hr>
                 
+            {% for evento in eventos %}
             <div class="row-fluid">
-                {% for evento in eventos %}
-                <article class="span4 thumbnail">
+                <article class="span12 thumbnail">
+
                     <a href="/evento/{{ evento.id }}">
                         <header>
                             <h2>{{ evento.nome }}</h2>
                         </header>
-
-                        {% if evento.imagem %}
-                        <img src="{{ MEDIA_URL }}{{ evento.imagem }}" alt="{{ evento.nome }}" />
-                        {% endif %}
                     </a>
 
-                    <dl class="dl-horizontal">
-                        <dt>Data <i class="icon-calendar"></i></dt>
-                        <dd>{{ evento.data|date:"d/m/y"}}</dd>
-                        <!-- <dt>Local <i class="icon-map-marker"></i></dt>
-                        <dd>Belo Horizonte</dd> -->
-                        <dt>Descrição <i class="icon-info-sign"></i></dt>
-                        <dd>{{ evento.descricao }}</dd>
-                    </dl>
-                    
-                    <a href="/evento/{{ evento.id }}">
-                        <span class="btn pull-right btn-primary"><i class="icon-plus icon-white"></i> Veja mais detalhe</span>
-                    </a>
+                    <div class="row-fluid">
+                    {% if evento.imagem %}
+                        <div class="span2">
+                            <img src="{{ MEDIA_URL }}{{ evento.imagem }}" alt="{{ evento.nome }}" />
+                        </div>
+                        <div class="span10">
+                    {% else %}
+                        <div class="span12">
+                    {% endif %}
+                            <dl class="dl-horizontal">
+                                <dt>Data <i class="icon-calendar"></i></dt>
+                                <dd>{{ evento.data|date:"d/m/y"}}</dd>
+                                <!-- <dt>Local <i class="icon-map-marker"></i></dt>
+                                <dd>Belo Horizonte</dd> -->
+                                <dt>Descrição <i class="icon-info-sign"></i></dt>
+                                <dd>{{ evento.descricao }}</dd>
+                            </dl>
+                            
+                            <a href="/evento/{{ evento.id }}">
+                                <span class="btn pull-right btn-primary"><i class="icon-plus icon-white"></i> Veja mais detalhe</span>
+                            </a>
+                        </div>
+                    </div>
 
-                    </a>
                 </article>
-                {% endfor %}
             </div>
+
+            <p></p>
+
+            {% endfor %}
                 
         </section>
     </div>

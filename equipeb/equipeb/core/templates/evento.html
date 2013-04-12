@@ -2,14 +2,21 @@
 
 {% block content %}
 <div class="row">
-    <div class="span12">
-        <section>
-            
-            <div class="page-header">
-                <h1>{{ evento.nome }}</h1>
-            </div>
-            
-            <img src={{MEDIA_URL}}{{ evento.imagem }}/>
+    <section>
+
+        <div class="page-header">
+            <h1>{{ evento.nome }}</h1>
+        </div>
+
+        {% if evento.imagem %}
+        <div class="span3">
+            <img src="{{ MEDIA_URL }}{{ evento.imagem }}" alt="" />
+        </div>
+
+        <div class="span9">
+        {% else %}
+        <div class="span12">
+        {% endif %}
 
             <dl class="dl-horizontal">
                 <dt><i class="icon-calendar"></i> Data: </dt>
@@ -19,9 +26,11 @@
                 <dt>Descrição <i class="icon-info-sign"></i></dt>
                 <dd>{{ evento.descricao }}</dd>
             </dl>
-            <div clas="row-fluid">
-                <a class="btn btn-primary" href="subscription">Inscreva-se</a> 
+
+            <div class="row-fluid">
+                <a class="pull-right btn btn-primary" href="subscription">Inscreva-se</a> 
             </div>
+
             <hr>
             
             <h2>Lista de Palestras</h2>
@@ -48,10 +57,11 @@
                         <a href="#participantes" data-palestra="{{palestra.id}}" data-toggle="modal" data-target="#participantes" class="btn palestra">Detalhes da palestra</a>
                 </article>
                 {% endfor %}
-                
-            </div>
+
+            </div>    
         </div>
-    </div>
+    </section>
+</div>
     
     <div id="participantes" class="modal hide fade" >
       <div class="modal-header">

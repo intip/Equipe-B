@@ -1,3 +1,4 @@
-body > .container {margin-top:40px;}
+body > .container {margin-top:60px; margin-bottom: 50px}
+footer {margin-bottom: 50px}
 .dl-horizontal dt {width:105px}
 .dl-horizontal dd {margin-left:117px}

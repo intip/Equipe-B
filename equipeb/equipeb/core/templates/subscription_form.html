@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="span12">
+
+
+    <div class="page-header">
+        <h1>Inscrição</h1>
+    </div>
+
+    <p class="lead">Preenche os dados abaixo:</p>
+
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" class="btn btn-primary" name="botao" value="Inscrever"/>
     </form>
-</div>
+
 {% endblock %}
